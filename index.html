@@ -22,10 +22,26 @@
             width: 90%;
             max-width: 400px;
             text-align: center;
+            position: relative;
         }
         h2 {
             color: #d32f2f;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .access-btn {
+            background-color: #1976d2;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
             margin-bottom: 15px;
+        }
+        .access-btn:hover {
+            background-color: #1565c0;
         }
         label {
             display: block;
@@ -49,16 +65,6 @@
             background-color: #e0e0e0;
             color: #333;
         }
-        .checkbox-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-top: 15px;
-        }
-        .checkbox-container input {
-            width: auto;
-            margin-right: 10px;
-        }
         button {
             background-color: #d32f2f;
             color: white;
@@ -74,6 +80,7 @@
             background-color: #b71c1c;
         }
         .declaration {
+            margin-top: 15px;
             font-size: 14px;
             color: #333;
         }
@@ -88,6 +95,8 @@
 <body>
     <div class="container">
         <h2>Meu PVT</h2>
+        <button class="access-btn" onclick="window.location.href='https://ead.policiamilitar.sp.gov.br/login/index.php'">Acesso ao PVT</button>
+        
         <label for="nome">Nome:</label>
         <input type="text" id="nome" placeholder="Digite seu nome">
         
@@ -113,10 +122,7 @@
             <option value="Dezembro">Dezembro</option>
         </select>
         
-        <div class="checkbox-container">
-            <input type="checkbox" id="confirmacao">
-            <label for="confirmacao" class="declaration">Declaro que efetuei o PVT referente ao mês indicado acima.</label>
-        </div>
+        <p class="declaration">Declaro que efetuei o PVT referente ao mês indicado acima.</p>
         
         <button onclick="enviarEmail()">Enviar</button>
         <p class="success-message" id="success-message">Informações enviadas com sucesso!!</p>
@@ -128,16 +134,10 @@
             var re = document.getElementById('re').value;
             var unidade = document.getElementById('unidade').value;
             var mes = document.getElementById('mes').value;
-            var confirmacao = document.getElementById('confirmacao');
             var successMessage = document.getElementById('success-message');
             
             if (!nome || !re) {
                 alert("Por favor, preencha todos os campos!");
-                return;
-            }
-            
-            if (!confirmacao.checked) {
-                alert("Você deve confirmar a declaração antes de enviar!");
                 return;
             }
             
@@ -149,7 +149,6 @@
             document.getElementById('nome').value = "";
             document.getElementById('re').value = "";
             document.getElementById('mes').selectedIndex = 0;
-            confirmacao.checked = false;
             
             successMessage.style.display = "block";
         }
