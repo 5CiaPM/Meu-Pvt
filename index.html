@@ -1,13 +1,14 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu PVT</title>
+    <title>MIKE APP</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e5e5e5;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -15,77 +16,84 @@
             margin: 0;
         }
         .container {
-            background: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
             width: 90%;
             max-width: 400px;
             text-align: center;
-            position: relative;
         }
         h2 {
-            color: #d32f2f;
-            margin-bottom: 10px;
-            text-align: center;
+            color: #003366;
+            margin-bottom: 20px;
         }
         .access-btn {
-            background-color: #1976d2;
-            color: white;
-            padding: 10px 15px;
+            background: linear-gradient(145deg, #1a1a2e, #16213e);
+            color: #ffffff;
+            padding: 12px 20px;
             border: none;
-            border-radius: 5px;
+            border-radius: 12px;
             font-size: 16px;
             cursor: pointer;
             width: 100%;
-            margin-bottom: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
         }
         .access-btn:hover {
-            background-color: #1565c0;
+            background: #0f3460;
+            transform: translateY(-2px);
+        }
+        .button-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
         }
         label {
             display: block;
             text-align: left;
-            margin-top: 10px;
-            font-weight: bold;
+            margin-top: 15px;
+            font-weight: 600;
             color: #333;
         }
         input, select {
-            width: calc(100% - 20px);
-            padding: 10px;
+            width: 100%;
+            padding: 12px;
             margin-top: 5px;
-            border: 2px solid #ccc;
-            border-radius: 5px;
+            border: none;
+            border-radius: 10px;
+            background-color: #f5f5f5;
             font-size: 16px;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
+            box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1);
         }
         .readonly-field {
             background-color: #e0e0e0;
             color: #333;
         }
         button {
-            background-color: #d32f2f;
+            background: linear-gradient(145deg, #1a1a2e, #16213e);
             color: white;
-            padding: 12px;
+            padding: 14px;
             border: none;
-            border-radius: 5px;
+            border-radius: 12px;
             font-size: 16px;
             width: 100%;
-            margin-top: 15px;
+            margin-top: 20px;
             cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
         }
         button:hover {
-            background-color: #b71c1c;
+            background: #0f3460;
+            transform: translateY(-2px);
         }
         .declaration {
-            margin-top: 15px;
+            margin-top: 20px;
             font-size: 14px;
-            color: #333;
+            color: #555;
         }
         .success-message {
-            margin-top: 15px;
+            margin-top: 20px;
             color: green;
             font-weight: bold;
             display: none;
@@ -94,18 +102,25 @@
 </head>
 <body>
     <div class="container">
-        <h2>Meu PVT</h2>
-        <button class="access-btn" onclick="window.location.href='https://ead.pmesp.org/course/view.php?id=6597'">Acesso ao PVT</button>
-        
+        <!-- Logo -->
+        <div style="margin-bottom: 20px;">
+            <img src="https://github.com/user-attachments/assets/f5338839-9e61-427e-8469-9dbe43503b29" alt="Logo" style="max-width: 30%; height: auto;">
+        </div>
+
+            <div class="button-row">
+            <button class="access-btn" onclick="window.location.href='https://ead.pmesp.org/course/view.php?id=6597'">PVT</button>
+            <button class="access-btn" onclick="window.location.href='https://ead.pmesp.org/course/index.php?categoryid=28'">EAP</button>
+        </div>
+
         <label for="nome">Nome:</label>
         <input type="text" id="nome" placeholder="Digite seu nome">
-        
+
         <label for="re">RE:</label>
         <input type="text" id="re" placeholder="Digite seu RE">
-        
+
         <label for="unidade">Unidade:</label>
         <input type="text" id="unidade" value="2ºBPM/I 5ªCia/PM" class="readonly-field" readonly>
-        
+
         <label for="mes">PVT Mês:</label>
         <select id="mes">
             <option value="Janeiro">Janeiro</option>
@@ -121,13 +136,13 @@
             <option value="Novembro">Novembro</option>
             <option value="Dezembro">Dezembro</option>
         </select>
-        
+
         <p class="declaration">Declaro que efetuei o PVT referente ao mês indicado acima.</p>
-        
+
         <button onclick="enviarEmail()">Enviar</button>
         <p class="success-message" id="success-message">Informações enviadas com sucesso!!</p>
     </div>
-    
+
     <script>
         function enviarEmail() {
             var nome = document.getElementById('nome').value;
@@ -135,21 +150,21 @@
             var unidade = document.getElementById('unidade').value;
             var mes = document.getElementById('mes').value;
             var successMessage = document.getElementById('success-message');
-            
+
             if (!nome || !re) {
                 alert("Por favor, preencha todos os campos!");
                 return;
             }
-            
+
             var assunto = encodeURIComponent("PVT - " + nome);
             var corpo = encodeURIComponent("Nome: " + nome + "\nRE: " + re + "\nUnidade: " + unidade + "\nPVT Mês: " + mes + "\n\nDeclaro que efetuei o PVT referente ao mês indicado acima.");
-            
+
             window.location.href = "mailto:2bpmi5cia@policiamilitar.sp.gov.br?subject=" + assunto + "&body=" + corpo;
-            
+
             document.getElementById('nome').value = "";
             document.getElementById('re').value = "";
             document.getElementById('mes').selectedIndex = 0;
-            
+
             successMessage.style.display = "block";
         }
     </script>
